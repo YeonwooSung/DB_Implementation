@@ -1,0 +1,19 @@
+{
+  "name": "db_implementation",
+  "version": "1.0.0",
+  "description": "server with a database and a simple graphical user interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YeonwooSung/DB_Implementation.git"
+  },
+  "author": "YeonwooSung",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/YeonwooSung/DB_Implementation/issues"
+  },
+  "homepage": "https://github.com/YeonwooSung/DB_Implementation#readme"
+}
