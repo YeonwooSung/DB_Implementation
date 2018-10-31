@@ -1,15 +1,12 @@
 const app = require('./utils/app');
 
-var http = require('http');
-
-var fs = require('fs');
-
+const http = require('http');
 const httpPort = 8080; //use the 8080 http port number
 
 app.set('port', httpPort);
 
 /* Create http server */
-var server = http.createServer(app);
+let server = http.createServer(app);
 
 /**
  * Event listener for HTTP server "error" event.
