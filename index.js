@@ -8,6 +8,9 @@ const httpPort = 8080; //use the 8080 http port number
 
 app.set('port', httpPort);
 
+/* Create http server */
+var server = http.createServer(app);
+
 /**
  * Event listener for HTTP server "error" event.
  */
