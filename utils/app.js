@@ -5,14 +5,18 @@ let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let ejs = require('ejs');
+let logger = require('morgan');
 
 let app = express()
 
+//Add the logger
+app.use(logger('dev'));
+
 //The routers objects.
-let indexRouter = require('./routes/index');
+let indexRouter = require('../routes/index');
 
 //Set the view engine
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/../views'));
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'html');
 

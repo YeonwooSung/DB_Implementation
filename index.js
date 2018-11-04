@@ -3,6 +3,8 @@ const app = require('./utils/app');
 const http = require('http');
 const httpPort = 8080; //use the 8080 http port number
 
+var debug = require('debug')('db_implementation:server');
+
 app.set('port', httpPort);
 
 /* Create http server */
