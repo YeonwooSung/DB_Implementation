@@ -4,7 +4,7 @@
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
-let consolidate = require('consolidate');
+let ejs = require('ejs');
 
 let app = express()
 
@@ -12,9 +12,9 @@ let app = express()
 let indexRouter = require('./routes/index');
 
 //Set the view engine
-app.engine('html', consolidate.swig);
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', html);
+app.engine('html', ejs.renderFile);
+app.set('view engine', 'html');
 
 //Add router objects
 app.use('/', indexRouter);
