@@ -14,6 +14,7 @@ app.use(logger('dev'));
 
 //The routers objects.
 let indexRouter = require('../routes/index');
+let publicRouter = require('../routes/publicRouter');
 
 //Set the view engine
 app.set('views', path.join(__dirname, '/../views'));
@@ -22,6 +23,7 @@ app.set('view engine', 'html');
 
 //Add router objects
 app.use('/', indexRouter);
+app.use('/public', publicRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
