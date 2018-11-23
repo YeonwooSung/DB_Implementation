@@ -1,7 +1,7 @@
 const app = require('./utils/app');
 
 const http = require('http');
-const httpPort = 8080; //use the 8080 http port number
+const httpPort = 9280; //use the 9280 http port number
 
 var debug = require('debug')('db_implementation:server');
 
