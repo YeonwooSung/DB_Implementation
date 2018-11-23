@@ -1,0 +1,39 @@
+doctype html
+html
+    head
+        title #{title}
+        link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
+        link(rel='stylesheet', href='stylesheets/login.css')
+        script.
+            function validateLogIn() {
+                let val = !{JSON.stringify(val)};
+                if (val) {
+                    let div = document.createElement('div');
+                    div.innerText = val.message;
+                    div.style.color = 'red';
+                    document.getElementById('hiddenErrorMessage').appendChild(div);
+                }
+            }
+            window.onload = validateLogIn;
+    body
+        header(id='navigate_bar', class='navigate_bar')
+            .navbarContainer
+                nav(class='navbar navbar-light')
+                    .navbar-collapse(id='header_navigator')
+                        center
+                            a(class='nav-link', href='/', title='go to homepage', id='homeButton')
+                                img(src='../public/images/main_logo.png', id='home_link_image')
+        .login.well
+            h1  Please log in...
+            hr
+            form(id='login-form', method='POST', action='/login')
+                .form-group
+                    label(for='id') ID
+                    input(type='text', name='id', class='form-control', id='id', placeholder='Enter ID')
+                .form-group
+                    label(for='password') Password
+                    input(type='password', name='password', class='form-control', id='password', placeholder='Enter password')
+                .form-group
+                    button.btn.btn-default(id='loginButton') Login
+                    a(href="register", style='margin-left: 10px') Or Register
+            .hiddenMessage(id='hiddenErrorMessage')

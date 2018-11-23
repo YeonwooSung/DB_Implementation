@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/YeonwooSung/DB_Implementation#readme",
   "dependencies": {
+    "crypto": "^1.0.1",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "http": "0.0.0",
