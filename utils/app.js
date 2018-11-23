@@ -4,7 +4,6 @@
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
-let ejs = require('ejs');
 let logger = require('morgan');
 
 let app = express()
