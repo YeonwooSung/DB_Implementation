@@ -5,4 +5,14 @@ html
         title #{title}
         meta(name='initial page', content='width=device-width, initial-scale=1.0')
     body
-        p1 hello
+        .overall
+            h1 Bookstream
+            .navigateBar
+                nav(class='navigation')
+                    ul(class='navigating_list')
+                        li(id='allBooks_nav')
+                            a(id='allBooks_link' href='/books') All audio books
+                        li(id='authors_nav')
+                            a(id='authors_link' href='/authors') Audio books by authors
+                        li(id='popular_nav')
+                            a(id='popular_link' href='/popular') Popular audio books
