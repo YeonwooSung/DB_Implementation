@@ -17,9 +17,8 @@ let indexRouter = require('../routes/index');
 let publicRouter = require('../routes/publicRouter');
 
 //Set the view engine
-app.set('views', path.join(__dirname, '/../views'));
-app.engine('html', ejs.renderFile);
-app.set('view engine', 'html');
+app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'pug'); //use the pug as a template engine
 
 //Add router objects
 app.use('/', indexRouter);
