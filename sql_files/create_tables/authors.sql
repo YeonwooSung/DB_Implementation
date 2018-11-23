@@ -1,4 +1,4 @@
--- Insert the sample data for audio book authors
+-- Insert the sample data for audiobook authors
 
 INSERT INTO audiobook_authors SET contributor_ID = 7, ISBN = "860-1404211171";
 

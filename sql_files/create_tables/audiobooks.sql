@@ -1,4 +1,4 @@
--- Insert sample data for audio book
+-- Insert sample data for audiobook
 
 INSERT INTO audiobook SET 
 ISBN = '860-1404211171', 
