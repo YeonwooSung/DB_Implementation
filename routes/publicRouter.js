@@ -3,34 +3,26 @@
 const express = require('express');
 const router = express.Router();
 
+let path = require('path')
+
 /* GET index.css */
 router.get('/stylesheets/index.css', function (req, res) {
-    res.sendFile(__dirname + '/../public/stylesheets/index.css');
+    res.sendFile(path.resolve(__dirname + '/../public/stylesheets/index.css'));
 });
 
 /* GET index_page.js */
 router.get('/javascripts/index_page.js', function (req, res) {
-    res.sendFile(__dirname + '/../public/javascripts/index_page.js');
-});
-
-/* GET login.css */
-router.get('/stylesheets/login.css', function (req, res) {
-    res.sendFile(__dirname + '/../public/stylesheets/login.css');
-});
-
-/* GET register.css */
-router.get('/stylesheets/register.css', function (req, res) {
-    res.sendFile(__dirname + '/../public/stylesheets/register.css');
+    res.sendFile(path.resolve(__dirname + '/../public/javascripts/index_page.js'));
 });
 
 /* GET index_page.js */
 router.get('/javascripts/register.js', function (req, res) {
-    res.sendFile(__dirname + '/../public/javascripts/register.js');
+    res.sendFile(path.resolve(__dirname + '/../public/javascripts/register.js'));
 });
 
-/* GET home.svg */
-router.get('/stylesheets/login.css', function (req, res) {
-    res.sendFile(__dirname + '/../public/images/home.svg');
+/* GET logo */
+router.get('/images/logo.png', function (req, res) {
+    res.sendFile(path.resolve(__dirname + '/../public/images/logo.png'));
 });
 
 module.exports = router;

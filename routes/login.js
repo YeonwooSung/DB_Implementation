@@ -24,8 +24,9 @@ router.post('/', function (req, res) {
     //TODO sql connection -> log in
 });
 
-router.get('/stylesheets/loginStyle.css', function (req, res) {
-    res.sendFile(path.resolve(__dirname + '/../public/stylesheets/loginStyle.css'));
+/* GET login.css */
+router.get('/stylesheets/login.css', function (req, res) {
+    res.sendFile(path.resolve(__dirname + '/../public/stylesheets/login.css'));
 });
 
 module.exports = router;

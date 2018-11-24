@@ -3,7 +3,7 @@ html
     head
         title #{title}
         link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
-        link(rel='stylesheet', href='stylesheets/login.css')
+        link(rel='stylesheet', href='login/stylesheets/login.css')
         script.
             function validateLogIn() {
                 let val = !{JSON.stringify(val)};
@@ -22,7 +22,7 @@ html
                     .navbar-collapse(id='header_navigator')
                         center
                             a(class='nav-link', href='/', title='go to homepage', id='homeButton')
-                                img(src='../public/images/main_logo.png', id='home_link_image')
+                                img(src='../public/images/logo.png', id='home_link_image')
         .login.well
             h1  Please log in...
             hr
