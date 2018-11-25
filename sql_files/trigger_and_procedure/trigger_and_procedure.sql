@@ -49,4 +49,48 @@ end //
 
 -- Trigger/Proceduer section 3: Ensure each person is either a customer or contributor (or both). Prevent direct entry into the ‘person’ relation.
 
--- TODO
+-- The procedure to insert into person table
+CREATE PROCEDURE insertPerson(personID INT,forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_ofbirth DATE)
+BEGIN
+	INSERT INTO 
+	person(ID, forename, middle_initials, surname, date_of_birth)
+	values (personID, forename, middle_initials, surname, date_of_birth);
+END //
+
+-- The procedure to insert into the person table and the contributor table.
+CREATE PROCEDURE insertContributor(biography VARCHAR(1024), forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
+BEGIN
+	DECLARE personExist INT;
+	DECLARE personCount INT;
+	SET personExist = 0;
+	SET personCount = 0;
+	(SELECT COUNT(person.ID) INTO personExist FROM person where
+	person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth);
+	IF(personExist = 0) THEN
+		(SELECT COUNT(person.ID) INTO personCount FROM person);
+		SET personCount = personCount + 1;
+		call insertperson(personCount, forename, middle_initials, surname, date_of_birth);
+	ELSE
+		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
+	END IF;
+	(INSERT INTO contributor(personalID, biography) values(personCount, biography));
+END //
+
+-- The procedure to insert into the person table and the customer table
+CREATE PROCEDURE insertCustomer(email_address VARCHAR(1024), forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
+BEGIN
+	DECLARE personExist INT;
+	DECLARE personCount INT;
+	SET personExist = 0;
+	SET personCount = 0;
+	(SELECT COUNT(person.ID) INTO personExist FROM person where
+	person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth);
+	IF(personExist = 0) THEN
+		(SELECT COUNT(person.ID) INTO personCount FROM person);
+		SET personCount = personCount + 1;
+		call insertperson(personCount, forename, middle_initials, surname, date_of_birth);
+	ELSE
+		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
+	END IF;
+	(INSERT INTO contributor (personalID, email_address) VALUES (personCount, email_address));
+END //
