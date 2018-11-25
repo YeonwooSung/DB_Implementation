@@ -16,6 +16,7 @@ router.get('/', function (req, res) {
 
 /* GET log in authentication */
 router.post('/', function (req, res) {
+    console.log(req.body);
     let id = req.body.id;
     let pw = req.body.password;
 

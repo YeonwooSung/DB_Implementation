@@ -4,13 +4,16 @@
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
+let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
 let app = express()
 
 //Add the logger
 app.use(logger('dev'));
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 //TODO use favicon
 const favicon = require('express-favicon');

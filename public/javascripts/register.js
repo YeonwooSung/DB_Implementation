@@ -20,14 +20,6 @@ function confirmUserInfo() {
 
     }
 
-    let email = document.getElementById('email').value;
-    let confirmedEmail = document.getElementById('confirm-email').value;
-
-    if (email !== confirmedEmail) {
-        makeNewElement('Please recheck the email and confirm-email sections.', 'emailDiv');
-        return false;
-    }
-
     return true;
 }
 
