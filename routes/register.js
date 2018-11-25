@@ -15,11 +15,14 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
     console.log(req.body);
-    let { userName, id, password, confirmedP, email, confirmedE } = req.body;
+    let { forename, middle_initial, surname, password, confirmedP, email } = req.body;
 
     password = util.encodePassword(password);
+    confirmedP = util.encodePassword(confirmedP);
 
-    //TODO sql connection -> register
+    if (password === confirmedP) {
+        //TODO sql connection -> register
+    }
 });
 
 /* GET login.css */

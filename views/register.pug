@@ -32,6 +32,11 @@ html
                     id='surname', placeholder='Enter your surname',
                     required, data-required-msg='Surname is required')
                 .form-group
+                    label(for='email') Email
+                    input(type='email', name='email', class='form-control form-control-lg',
+                    id='email', placeholder='Enter email',
+                    required data-required-msg='Email address is required')
+                .form-group
                     label(for='password') Password
                     input(type='password', name='password', class='form-control form-control-lg',
                     id='password', placeholder='Enter password'
@@ -41,11 +46,6 @@ html
                     input(type='password', name='confirm-password', class='form-control form-control-lg',
                     id='confirm-password', placeholder='Confirm password'
                     required, data-required-msg="Please confirm your password")
-                .form-group
-                    label(for='email') Email
-                    input(type='email', name='email', class='form-control form-control-lg',
-                    id='email', placeholder='Enter email',
-                    required data-required-msg='Email address is required')
                 .form-group
                     button.btn.btn-default(id='registerButton', type='submit') Register
                     a(href="login", style='margin-left: 10px') Or Login
