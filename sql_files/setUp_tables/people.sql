@@ -61,6 +61,6 @@ INSERT INTO person SET ID = 10, forename = 'Jon', middle_initials = 'Q', surname
 INSERT INTO customer SET personalID = 10, email_address = 'jon@spellbad.com';
 
 
-INSERT INTO personSET ID = 11, forename = 'Jonathan', surname = 'Swift', date_of_birth = '1667-11-30';
+INSERT INTO person SET ID = 11, forename = 'Jonathan', surname = 'Swift', date_of_birth = '1667-11-30';
 
 INSERT INTO contributor SET personalID = 11, biography = "Irish author, clergyman and satirist Jonathan Swift received a bachelor's degree from Trinity College and then worked as a statesman's assistant. Eventually, he became dean of St. Patrick's Cathedral in Dublin.";
