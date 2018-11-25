@@ -25,7 +25,7 @@ let indexRouter = require('../routes/index');
 let publicRouter = require('../routes/publicRouter');
 let loginRouter = require('../routes/login');
 let registerRouter = require('../routes/register');
-let bookRouter= require('../routes/books');s
+let bookRouter= require('../routes/books');
 
 //Add router objects
 app.use('/', indexRouter);
