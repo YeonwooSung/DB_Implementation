@@ -11,6 +11,12 @@ let app = express()
 //Add the logger
 app.use(logger('dev'));
 
+
+//TODO use favicon
+const favicon = require('express-favicon');
+app.use(favicon(path.resolve(__dirname + '../public/images/book.ico')));
+
+
 //The routers objects.
 let indexRouter = require('../routes/index');
 let publicRouter = require('../routes/publicRouter');
