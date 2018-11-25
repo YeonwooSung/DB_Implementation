@@ -12,22 +12,22 @@ CREATE TABLE person (
 CREATE TABLE contributor (
     person_ID INT,
     biography VARCHAR(1024),
-    primary key(person_ID),
-    foreign key(person_ID) references person(ID)
+    primary key(personalID),
+    foreign key(personalID) references person(ID)
 );
 
 CREATE TABLE customer (
-    person_ID INT,
+    personalID INT,
     email_address VARCHAR(1024),
-    primary key(person_ID),
-    foreign key(person_ID) references person(ID)
+    primary key(personalID),
+    foreign key(personalID) references person(ID)
 );
 
 CREATE TABLE phone_number (
     customer_ID INT,
     phone_number VARCHAR(20),
     primary key(customer_ID,phone_number),
-    foreign key(customer_ID) references customer(person_ID)
+    foreign key(customer_ID) references customer(personalID)
 );
 
 CREATE TABLE publisher (
@@ -70,7 +70,7 @@ CREATE TABLE audiobook_authors (
     contributor_ID INT,
     ISBN VARCHAR(20),
     primary key(contributor_ID,ISBN),
-    foreign key(contributor_ID) references contributor(person_ID),
+    foreign key(contributor_ID) references contributor(personalID),
     foreign key(ISBN) references audiobook(ISBN)
 );
 
@@ -79,7 +79,7 @@ CREATE TABLE audiobook_purchases (
     ISBN VARCHAR(20),
     purchase_date DATETIME NOT NULL,
     primary key(customer_ID,ISBN),
-    foreign key(customer_ID) references customer(person_ID),
+    foreign key(customer_ID) references customer(personalID),
     foreign key(ISBN) references audiobook(ISBN)
 );
 
@@ -91,20 +91,6 @@ CREATE TABLE audiobook_reviews (
     comment VARCHAR(1024),
     verified BOOLEAN not null default 0,
     primary key(customer_ID,ISBN),
-    foreign key(customer_ID) references customer(person_ID),
+    foreign key(customer_ID) references customer(personalID),
     foreign key(ISBN) references audiobook(ISBN)
 );
-
-
--- Drop all created tables
-
-DROP Table audiobook_reviews;
-DROP Table audiobook_purchases;
-DROP Table audiobook_authors;
-DROP Table chapter;
-DROP Table audiobook;
-DROP table publisher;
-DROP table phone_number;
-DROP table customer;
-DROP table contributor;
-DROP table person;
