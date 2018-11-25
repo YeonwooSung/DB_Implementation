@@ -25,17 +25,21 @@ let indexRouter = require('../routes/index');
 let publicRouter = require('../routes/publicRouter');
 let loginRouter = require('../routes/login');
 let registerRouter = require('../routes/register');
-
-//Set the view engine
-app.engine('pug', require('pug').__express)
-app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'pug'); //use the pug as a template engine
+let bookRouter= require('../routes/books');s
 
 //Add router objects
 app.use('/', indexRouter);
 app.use('/public', publicRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
+app.use('/books', bookRouter);
+
+
+//Set the view engine
+app.engine('pug', require('pug').__express)
+app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'pug'); //use the pug as a template engine
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
