@@ -37,7 +37,7 @@ SELECT audiobook_authors.contributor_ID,
 		ELSE CONCAT(person.forename, ' ', person.middle_initials, ' ', person.surname)
 	END as Full_Name
 ,
-GROUP_CONCAT(audiobook.title ORDER BY audiobook.title SEPARATOR ',') as Titles
+    GROUP_CONCAT(audiobook.title ORDER BY audiobook.title SEPARATOR ',') as Titles
 FROM audiobook_authors
 JOIN audiobook_purchases
 ON audiobook_authors.contributor_ID = audiobook_purchases.customer_ID
