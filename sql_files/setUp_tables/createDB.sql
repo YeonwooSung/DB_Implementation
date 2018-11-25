@@ -10,7 +10,7 @@ CREATE TABLE person (
 );
 
 CREATE TABLE contributor (
-    person_ID INT,
+    personalID INT,
     biography VARCHAR(1024),
     primary key(personalID),
     foreign key(personalID) references person(ID)
