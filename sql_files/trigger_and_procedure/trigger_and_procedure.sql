@@ -73,7 +73,7 @@ BEGIN
 	ELSE
 		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
 	END IF;
-	(INSERT INTO contributor(personalID, biography) values(personCount, biography));
+	(INSERT INTO contributor VALUE (personCount, biography));
 END //
 
 -- The procedure to insert into the person table and the customer table
@@ -92,5 +92,5 @@ BEGIN
 	ELSE
 		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
 	END IF;
-	(INSERT INTO contributor (personalID, email_address) VALUES (personCount, email_address));
+	(INSERT INTO customer VALUE (personCount, email_address));
 END //
