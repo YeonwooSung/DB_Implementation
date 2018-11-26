@@ -20,6 +20,26 @@ function confirmUserInfo() {
 
     }
 
+    let birthday = document.getElementById('birthday').value;
+    const alertMessage = 'Birthday format: YYYY-MM-DD';
+
+    if (birthday.includes('-')) {
+        birthday = birthday.split('-');
+
+        if (birthday.length != 3) {
+            alert(alertMessage);
+            return false;
+        } else {
+            if (birthday[0].length != 4 || birthday[1].length != 2 || birthday[2].length != 2) {
+                alert(alertMessage);
+                return false;
+            }
+        }
+    } else {
+        alert(alertMessage);
+        return false;
+    }
+
     return true;
 }
 

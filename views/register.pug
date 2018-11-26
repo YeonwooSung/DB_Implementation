@@ -2,9 +2,10 @@ doctype html
 html
     head
         title DataHub4U :: Register
-        script(type='text/javascript', src='../public/javascripts/register.js')
         link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
         link(rel='stylesheet', href='register/stylesheets/register.css')
+        link(rel='stylesheet', href='//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css')
+        script(type='text/javascript', src='../public/javascripts/register.js')
     body
         header(id='navigate_bar', class='navigate_bar')
             .navbarContainer
@@ -19,33 +20,38 @@ html
             form(id='register-form', onsubmit='return confirmUserInfo();', method='POST', action='/register')
                 .form-group
                     label(for='forename') Forename
-                    input(type='text', name='forename', class='form-control form-control-lg',
+                    input(type='text', name='forename', class='form-control form-control',
                     id='forename', placeholder='Enter your forename',
                     required, data-required-msg='Forename is required')
                 .form-group
                     label(for='middle_initial') Middle Initial
-                    input(type='text', name='middle_initial', class='form-control form-control-lg',
+                    input(type='text', name='middle_initial', class='form-control form-control',
                     id='middle_initial', placeholder='Enter your middle initial')
                 .form-group
                     label(for='surname') Surname
-                    input(type='text', name='surname', class='form-control form-control-lg',
+                    input(type='text', name='surname', class='form-control form-control',
                     id='surname', placeholder='Enter your surname',
                     required, data-required-msg='Surname is required')
                 .form-group
                     label(for='email') Email
-                    input(type='email', name='email', class='form-control form-control-lg',
+                    input(type='email', name='email', class='form-control form-control',
                     id='email', placeholder='Enter email',
                     required data-required-msg='Email address is required')
                 .form-group
                     label(for='password') Password
-                    input(type='password', name='password', class='form-control form-control-lg',
+                    input(type='password', name='password', class='form-control form-control',
                     id='password', placeholder='Enter password'
                     required, data-required-msg='Password is required')
                 .form-group
                     label(for='confirm-password') Confirm Password
-                    input(type='password', name='confirm-password', class='form-control form-control-lg',
+                    input(type='password', name='confirm-password', class='form-control form-control',
                     id='confirm-password', placeholder='Confirm password'
                     required, data-required-msg="Please confirm your password")
+                .form-group
+                    label(for='birthday') Birthday
+                    input(type='datetime', name='birthday', class='form-control form-control',
+                    id='birthday', placeholder='YYYY-MM-DD'
+                    required, data-required-msg="Your birthday (YYYY-MM-DD) is required!")
                 .form-group
                     button.btn.btn-default(id='registerButton', type='submit') Register
                     a(href="login", style='margin-left: 10px') Or Login

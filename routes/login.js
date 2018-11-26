@@ -4,8 +4,6 @@ const router = express.Router();
 //use the sql queries to check if the user is registered.
 let conn = require('../utils/dbConnection');
 
-let util = require('../utils/util');
-
 //To solve the forbidden error that is occurred by the '/..' in the res.sendFile function.
 const path = require('path');
 
@@ -19,8 +17,6 @@ router.post('/', function (req, res) {
     console.log(req.body);
     let id = req.body.id;
     let pw = req.body.password;
-
-    pw = util.encodePassword(pw);
 
     //TODO sql connection -> log in
 });

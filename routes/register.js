@@ -4,8 +4,6 @@ const router = express.Router();
 //use the sql queries to check if the user is registered.
 const conn = require('../utils/dbConnection');
 
-const util = require('../utils/util');
-
 let path = require('path');
 
 /* GET users listing. */
@@ -16,9 +14,6 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
     console.log(req.body);
     let { forename, middle_initial, surname, password, confirmedP, email } = req.body;
-
-    password = util.encodePassword(password);
-    confirmedP = util.encodePassword(confirmedP);
 
     if (password === confirmedP) {
         //TODO sql connection -> register
