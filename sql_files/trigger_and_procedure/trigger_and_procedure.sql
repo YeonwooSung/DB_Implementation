@@ -53,7 +53,7 @@ end //
 -- Trigger/Proceduer section 3: Ensure each person is either a customer or contributor (or both). Prevent direct entry into the ‘person’ relation.
 
 -- The procedure to insert data into person table
-CREATE PROCEDURE insertPerson(personalID INT,forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_ofbirth DATE)
+CREATE PROCEDURE insertPerson(personalID INT,forename VARCHAR(20), middle_initials VARCHAR(20), surname VARCHAR(20), date_ofbirth DATE)
 BEGIN
 	INSERT INTO 
 	person(ID, forename, middle_initials, surname, date_of_birth)
@@ -156,7 +156,7 @@ BEGIN
 		SET personCount = personCount + 1;
 		call insertPerson_noMiddleInitial(personCount, forename, surname, date_of_birth);
 	ELSE
-		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
+		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.surname = surname AND person.date_of_birth = date_of_birth));
 	END IF;
 	call insertAsCustomer(personCount, email_address, pwd);
 END //
