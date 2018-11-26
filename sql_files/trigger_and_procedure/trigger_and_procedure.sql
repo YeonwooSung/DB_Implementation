@@ -143,7 +143,7 @@ END //
 
 
 -- The procedure to insert into the person table and the customer table
-CREATE PROCEDURE insertCustomer(email_address VARCHAR(100), pwd VARCHAR(150), forename VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
+CREATE PROCEDURE insertCustomer_noMiddleInitial(email_address VARCHAR(100), pwd VARCHAR(150), forename VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
 BEGIN
 	DECLARE personExist INT;
 	DECLARE personCount INT;
