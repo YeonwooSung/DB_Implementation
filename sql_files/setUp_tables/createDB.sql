@@ -18,7 +18,7 @@ CREATE TABLE contributor (
 
 CREATE TABLE customer (
     personalID INT,
-    email_address VARCHAR(1024),
+    email_address VARCHAR(100),
     primary key(personalID),
     foreign key(personalID) references person(ID)
 );
