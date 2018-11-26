@@ -4,18 +4,15 @@ html
     head
         title Bookstream :: books
         meta(name='books', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='/stylesheets/register.css')
         script.
             let data = !{JSON.stringify(data)};
 
-            function init() {
-                generateAudiobookTable(data);
-            }
-
-            function generateAudiobookTable(books) {
+            function generateAudiobookTable() {
                 let table = document.getElementById('bookTable');
 
                 for (var i = 0; i < data.length; i++) {
-                    let book = books[i];
+                    let book = data[i];
 
                     let row = document.createElement('tr');
                     let isbn = document.createElement('th');
@@ -27,26 +24,16 @@ html
 
                     row.id = 'row_' + i;
 
-                    isbn.id = 'isbn_' + i;
                     isbn.innerText = book.ISBN;
-
-                    title.id = 'title_' + i;
                     title.innerText = book.title;
-
-                    time.id = 'time_' + i;
                     time.innerText = book.running_time;
-
-                    price.id = 'price_' + i;
                     price.innerText = book.purchase_price;
-
-                    publisher.id = 'publisher_' + i;
                     publisher.innerText = book.publisher_name;
-
-                    publishedDate.id = 'publishedDate_' + i;
                     publishedDate.innerText = book.published_date;
 
                     row.appendChild(isbn);
                     row.appendChild(title);
+                    row.appendChild(time);
                     row.appendChild(price);
                     row.appendChild(publisher);
                     row.appendChild(publishedDate);
@@ -55,14 +42,23 @@ html
                 }
             }
 
-            window.onload = init;
+            window.onload = generateAudiobookTable;
     body
+        header(id='navigate_bar', class='navigate_bar')
+            .navbarContainer
+                nav(class='navbar navbar-light')
+                    .navbar-collapse(id='header_navigator')
+                        center
+                            a(class='nav-link', href='/', title='go to homepage', id='homeButton')
+                                img(src='../public/images/logo.png', id='home_link_image')
         .books
+            center
+                h1 List of all audiobooks
             table(id='bookTable' class='table')
                 tr(id='audiobookFields')
                     th ISBN
                     th Title
                     th Running Time
                     th Price
-                    th Publisher Name
+                    th Publisher
                     th Published Date
