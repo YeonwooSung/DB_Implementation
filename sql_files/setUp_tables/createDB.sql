@@ -19,7 +19,7 @@ CREATE TABLE contributor (
 CREATE TABLE customer (
     personalID INT,
     email_address VARCHAR(100) NOT NULL,
-    pwd VARCHAR(150) NOT NULL, --TODO edit everything else as well!!
+    pwd VARCHAR(150) NOT NULL,
     primary key(personalID),
     foreign key(personalID) references person(ID)
 );
