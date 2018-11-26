@@ -61,13 +61,6 @@ BEGIN
 END //
 
 
--- The procedure to insert  data into person table
-CREATE PROCEDURE insertPerson_noMiddleInitial(personalID INT,forename VARCHAR(20), surname VARCHAR(20), date_ofbirth DATE)
-BEGIN
-	INSERT INTO person SET ID = personalID, forename = forename, surname = surname, date_of_birth = date_of_birth;
-END //
-
-
 -- The procedure to insert data into contributor table.
 CREATE PROCEDURE insertAsContributor(personalID INT, biography VARCHAR(1024))
 BEGIN
@@ -88,26 +81,6 @@ BEGIN
 		(SELECT COUNT(person.ID) INTO personCount FROM person);
 		SET personCount = personCount + 1;
 		call insertPerson(personCount, forename, middle_initials, surname, date_of_birth);
-	ELSE
-		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
-	END IF;
-	call insertAsContributor(personCount, biography);
-END //
-
-
--- The procedure to insert data into the contributor table
-CREATE PROCEDURE insertContributor_noMiddleInitial(biography VARCHAR(1024), forename VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
-BEGIN
-	DECLARE personExist INT;
-	DECLARE personCount INT;
-	SET personExist = 0;
-	SET personCount = 0;
-	(SELECT COUNT(person.ID) INTO personExist FROM person where
-	person.forename = forename AND person.surname = surname AND person.date_of_birth = date_of_birth);
-	IF(personExist = 0) THEN
-		(SELECT COUNT(person.ID) INTO personCount FROM person);
-		SET personCount = personCount + 1;
-		call insertPerson_noMiddleInitial(personCount, forename, surname, date_of_birth);
 	ELSE
 		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
 	END IF;
@@ -137,26 +110,6 @@ BEGIN
 		call insertPerson(personCount, forename, middle_initials, surname, date_of_birth);
 	ELSE
 		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
-	END IF;
-	call insertAsCustomer(personCount, email_address, pwd);
-END //
-
-
--- The procedure to insert into the person table and the customer table
-CREATE PROCEDURE insertCustomer_noMiddleInitial(email_address VARCHAR(100), pwd VARCHAR(150), forename VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
-BEGIN
-	DECLARE personExist INT;
-	DECLARE personCount INT;
-	SET personExist = 0;
-	SET personCount = 0;
-	(SELECT COUNT(person.ID) INTO personExist FROM person where
-	person.forename = forename AND person.surname = surname AND person.date_of_birth = date_of_birth);
-	IF(personExist = 0) AND (email_address IS NOT NULL) AND (pwd IS NOT NULL) THEN
-		(SELECT COUNT(person.ID) INTO personCount FROM person);
-		SET personCount = personCount + 1;
-		call insertPerson_noMiddleInitial(personCount, forename, surname, date_of_birth);
-	ELSE
-		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.surname = surname AND person.date_of_birth = date_of_birth));
 	END IF;
 	call insertAsCustomer(personCount, email_address, pwd);
 END //
