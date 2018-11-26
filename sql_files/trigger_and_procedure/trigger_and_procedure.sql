@@ -47,17 +47,26 @@ begin
 end //
 
 
+
 -- Trigger/Proceduer section 3: Ensure each person is either a customer or contributor (or both). Prevent direct entry into the ‘person’ relation.
 
--- The procedure to insert into person table
-CREATE PROCEDURE insertPerson(personID INT,forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_ofbirth DATE)
+-- The procedure to insert data into person table
+CREATE PROCEDURE insertPerson(personalID INT,forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_ofbirth DATE)
 BEGIN
 	INSERT INTO 
 	person(ID, forename, middle_initials, surname, date_of_birth)
 	values (personID, forename, middle_initials, surname, date_of_birth);
 END //
 
--- The procedure to insert into the person table and the contributor table.
+
+-- The procedure to insert data into contributor table.
+CREATE PROCEDURE insertAsContributor(personalID INT, biography VARCHAR(1024))
+BEGIN
+	INSERT INTO contributor (personalID, biography) values (personalID, biography);
+END //
+
+
+-- The procedure to insert data into the person table and the contributor table.
 CREATE PROCEDURE insertContributor(biography VARCHAR(1024), forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
 BEGIN
 	DECLARE personExist INT;
@@ -73,11 +82,19 @@ BEGIN
 	ELSE
 		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
 	END IF;
-	(INSERT INTO contributor VALUE (personCount, biography));
+	call insertAsContributor(personCount, biography);
 END //
 
+
+-- The procedure to insert data into customer table.
+CREATE PROCEDURE insertAsCustomer(personalID INT, email_address VARCHAR(100))
+BEGIN
+	INSERT INTO customer (personalID, email_address) values (personalID, email_address);
+END //
+
+
 -- The procedure to insert into the person table and the customer table
-CREATE PROCEDURE insertCustomer(email_address VARCHAR(1024), forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
+CREATE PROCEDURE insertCustomer(email_address VARCHAR(100), forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
 BEGIN
 	DECLARE personExist INT;
 	DECLARE personCount INT;
@@ -92,5 +109,5 @@ BEGIN
 	ELSE
 		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
 	END IF;
-	(INSERT INTO customer VALUE (personCount, email_address));
+	call insertAsCustomer(personCount, email_address);
 END //
