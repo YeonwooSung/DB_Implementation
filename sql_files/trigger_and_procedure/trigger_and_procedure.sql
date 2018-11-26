@@ -89,14 +89,14 @@ END //
 
 
 -- The procedure to insert data into customer table.
-CREATE PROCEDURE insertAsCustomer(personalID INT, email_address VARCHAR(100))
+CREATE PROCEDURE insertAsCustomer(personalID INT, email_address VARCHAR(100), pwd VARCHAR(150))
 BEGIN
-	INSERT INTO customer (personalID, email_address) values (personalID, email_address);
+	INSERT INTO customer (personalID, email_address, pwd) values (personalID, email_address, pwd);
 END //
 
 
 -- The procedure to insert into the person table and the customer table
-CREATE PROCEDURE insertCustomer(email_address VARCHAR(100), forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
+CREATE PROCEDURE insertCustomer(email_address VARCHAR(100), pwd VARCHAR(150), forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
 BEGIN
 	DECLARE personExist INT;
 	DECLARE personCount INT;
@@ -104,12 +104,12 @@ BEGIN
 	SET personCount = 0;
 	(SELECT COUNT(person.ID) INTO personExist FROM person where
 	person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth);
-	IF(personExist = 0) THEN
+	IF(personExist = 0) AND (email_address IS NOT NULL) AND (pwd IS NOT NULL) THEN
 		(SELECT COUNT(person.ID) INTO personCount FROM person);
 		SET personCount = personCount + 1;
 		call insertperson(personCount, forename, middle_initials, surname, date_of_birth);
 	ELSE
 		SET personCount = (SELECT person.ID FROM person where (person.forename = forename AND person.middle_initials = middle_initials AND person.surname = surname AND person.date_of_birth = date_of_birth));
 	END IF;
-	call insertAsCustomer(personCount, email_address);
+	call insertAsCustomer(personCount, email_address, pwd);
 END //

@@ -1,6 +1,6 @@
 -- Query 1
 
-SELECT customer.personalID, customer.email_address,
+CREATE OR REPLACE VIEW Q1 AS SELECT customer.personalID, customer.email_address,
     CASE
 	WHEN person.middle_initials IS NULL
 		THEN CONCAT(person.forename, ' ', person.surname)
@@ -21,16 +21,14 @@ ORDER BY Total_Spent DESC, person.forename ASC, person.surname ASC, person.middl
 
 
 -- Query 2
-
-SELECT audiobook.ISBN, audiobook.title FROM audiobook
+CREATE OR REPLACE VIEW Q2 AS SELECT audiobook.ISBN, audiobook.title FROM audiobook
 WHERE audiobook.ISBN NOT IN
     (SELECT audiobook_purchases.ISBN FROM audiobook_purchases)
 ORDER BY audiobook.title ASC;
 
 
 -- Query 3
-
-SELECT audiobook_authors.contributor_ID,
+CREATE OR REPLACE VIEW Q3 AS SELECT audiobook_authors.contributor_ID,
     CASE
 	WHEN person.middle_initials IS NULL
 		THEN CONCAT(person.forename, ' ', person.surname)
