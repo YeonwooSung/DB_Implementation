@@ -69,7 +69,7 @@ END //
 
 
 -- The procedure to insert data into the person table and the contributor table.
-CREATE PROCEDURE insertContributor(biography VARCHAR(1024), forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
+CREATE PROCEDURE insertContributor(biography VARCHAR(1024), forename VARCHAR(20), middle_initials VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
 BEGIN
 	DECLARE personExist INT;
 	DECLARE personCount INT;
@@ -96,7 +96,7 @@ END //
 
 
 -- The procedure to insert into the person table and the customer table
-CREATE PROCEDURE insertCustomer(email_address VARCHAR(100), pwd VARCHAR(150), forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
+CREATE PROCEDURE insertCustomer(email_address VARCHAR(100), pwd VARCHAR(150), forename VARCHAR(20), middle_initials VARCHAR(20), surname VARCHAR(20), date_of_birth DATE)
 BEGIN
 	DECLARE personExist INT;
 	DECLARE personCount INT;
