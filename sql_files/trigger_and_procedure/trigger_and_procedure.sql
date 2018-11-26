@@ -62,9 +62,9 @@ END //
 
 
 -- The procedure to insert  data into person table
-insertPerson_noMiddleInitial(personalID INT,forename VARCHAR(20), middle_inititals VARCHAR(20), surname VARCHAR(20), date_ofbirth DATE)
+CREATE PROCEDURE insertPerson_noMiddleInitial(personalID INT,forename VARCHAR(20), surname VARCHAR(20), date_ofbirth DATE)
 BEGIN
-	INSERT INTO person SET ID = personalID, forename = forename, middle_initials = middle_initials, surname = surname, date_of_birth = date_of_birth;
+	INSERT INTO person SET ID = personalID, forename = forename, surname = surname, date_of_birth = date_of_birth;
 END //
 
 
