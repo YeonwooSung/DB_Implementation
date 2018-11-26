@@ -1,8 +1,68 @@
 doctype html
 
 html
-    head 
+    head
         title Bookstream :: books
         meta(name='books', content='width=device-width, initial-scale=1.0')
+        script.
+            let data = !{JSON.stringify(data)};
+
+            function init() {
+                generateAudiobookTable(data);
+            }
+
+            function generateAudiobookTable(books) {
+                let table = document.getElementById('bookTable');
+
+                for (var i = 0; i < data.length; i++) {
+                    let book = books[i];
+
+                    let row = document.createElement('tr');
+                    let isbn = document.createElement('th');
+                    let title = document.createElement('th');
+                    let time = document.createElement('th');
+                    let price = document.createElement('th');
+                    let publisher = document.createElement('th');
+                    let publishedDate = document.createElement('th');
+
+                    row.id = 'row_' + i;
+
+                    isbn.id = 'isbn_' + i;
+                    isbn.innerText = book.ISBN;
+
+                    title.id = 'title_' + i;
+                    title.innerText = book.title;
+
+                    time.id = 'time_' + i;
+                    time.innerText = book.running_time;
+
+                    price.id = 'price_' + i;
+                    price.innerText = book.purchase_price;
+
+                    publisher.id = 'publisher_' + i;
+                    publisher.innerText = book.publisher_name;
+
+                    publishedDate.id = 'publishedDate_' + i;
+                    publishedDate.innerText = book.published_date;
+
+                    row.appendChild(isbn);
+                    row.appendChild(title);
+                    row.appendChild(price);
+                    row.appendChild(publisher);
+                    row.appendChild(publishedDate);
+
+                    table.appendChild(row);
+                }
+            }
+
+            window.onload = init;
     body
         .books
+            table(id='bookTable' class='table')
+                tr(id='audiobookFields')
+                    th ISBN
+                    th Title
+                    th Running Time
+                    th Price
+                    th Publisher Name
+                    th Published Date
