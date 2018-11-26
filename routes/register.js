@@ -13,11 +13,9 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
     console.log(req.body);
-    let { forename, middle_initial, surname, password, confirmedP, email } = req.body;
+    let { forename, middle_initial, surname, email, password, confirmedP, birthday } = req.body;
 
-    if (password === confirmedP) {
-        //TODO sql connection -> register
-    }
+    conn.checkIfRegisteredAlready(forename, middle_initial, surname, email, password, birthday, res);
 });
 
 /* GET login.css */

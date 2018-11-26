@@ -14,11 +14,10 @@ router.get('/', function (req, res) {
 
 /* GET log in authentication */
 router.post('/', function (req, res) {
-    console.log(req.body);
-    let id = req.body.id;
+    let email = req.body.email;
     let pw = req.body.password;
 
-    //TODO sql connection -> log in
+    conn.doTheLogInProcess(email, pw, res);
 });
 
 /* GET login.css */
