@@ -1,6 +1,6 @@
 DELIMITER //
 
--- Trigger/Proceduer section 1: Verify book reviews
+-- Trigger/Proceduer section 1: Verify book rating and book reviews
 
 CREATE OR REPLACE TRIGGER `verifyBookRating` before insert on `audiobook_reviews`
 for each row
@@ -9,6 +9,7 @@ begin
     SIGNAL sqlstate '45001' set message_text = "The rating has to be between 1 and 5";
     end if;
 end //
+
 
 CREATE OR REPLACE TRIGGER `verifyBookReviews` before insert on `audiobook_reviews`
 for each row
@@ -24,6 +25,7 @@ begin
    	set NEW.verified = 1;
     end if;
 end //
+
 
 
 -- Trigger/Proceduer section 2: Enforce age ratings

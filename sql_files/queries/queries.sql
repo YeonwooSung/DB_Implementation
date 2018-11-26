@@ -7,8 +7,8 @@ SELECT customer.personalID, customer.email_address,
 		ELSE CONCAT(person.forename, ' ', person.middle_initials, ' ', person.surname)
 	END as Full_Name
 ,
-    COUNT(audiobook_purchases.ISBN) as Total_Number_Of_Purchases,
-    IFNULL(SUM(audiobook.purchase_price), 0) as Total_Spent
+COUNT(audiobook_purchases.ISBN) as Total_Number_Of_Purchases,
+IFNULL(SUM(audiobook.purchase_price), 0) as Total_Spent
 FROM customer
     LEFT JOIN audiobook_purchases
     ON customer.personalID = audiobook_purchases.customer_ID

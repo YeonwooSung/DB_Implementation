@@ -11,21 +11,22 @@ CREATE TABLE person (
 
 CREATE TABLE contributor (
     personalID INT,
-    biography VARCHAR(1024),
+    biography VARCHAR(1024) NOT NULL,
     primary key(personalID),
     foreign key(personalID) references person(ID)
 );
 
 CREATE TABLE customer (
     personalID INT,
-    email_address VARCHAR(100),
+    email_address VARCHAR(100) NOT NULL,
+    pwd VARCHAR(150) NOT NULL, --TODO edit everything else as well!!
     primary key(personalID),
     foreign key(personalID) references person(ID)
 );
 
 CREATE TABLE phone_number (
     customer_ID INT,
-    phone_number VARCHAR(20),
+    phone_number VARCHAR(20) NOT NULL,
     primary key(customer_ID,phone_number),
     foreign key(customer_ID) references customer(personalID)
 );
