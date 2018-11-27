@@ -1,0 +1,44 @@
+header {
+    height: 8vmax;
+}
+
+img {
+    height: 8vmax;
+}
+
+body {
+    padding-top: 10px;
+    padding-right: 20vw;
+    padding-left: 20vw;
+}
+
+h2 {
+    color: red;
+    margin-top: 5vmax;
+    margin-bottom: 3vmax;
+}
+
+table {
+    margin-bottom: 5vmax;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+}
+
+input {
+    width: 10vmax;
+    height: 2vmax;
+    margin-top: 1vmax;
+    margin-bottom: 2vmax;
+}
+
+button {
+    height: 2vmax;
+    margin-left: 1vmax;
+}

@@ -1,0 +1,71 @@
+doctype html
+
+html
+    head
+        title Bookstream :: authors
+        meta(name='authors', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='authors/stylesheets/authors.css')
+        script.
+            let data = !{JSON.stringify(data)};
+
+            function generateAudiobookTable() {
+                let table = document.getElementById('authorTable');
+
+                let th1 = document.createElement('th');
+                th1.innerText = 'Author';
+                let th2 = document.createElement('th');
+                th2.innerText = 'Title';
+                let th3 = document.createElement('th');
+                th3.innerText = 'ISBN';
+                let th4 = document.createElement('th');
+                th4.innerText = 'Published Date';
+                let tr = document.createElement('tr');
+
+                tr.appendChild(th1);
+                tr.appendChild(th2);
+                tr.appendChild(th3);
+                tr.appendChild(th4);
+                table.appendChild(tr);
+
+                for (var i = 0; i < data.length; i++) {
+                    let author = data[i];
+                    let name;
+
+                    if (author.middle_initial) {
+                        name = author.forename + ' ' + author.middle_initials + ' ' + author.surname;
+                    } else {
+                        name = author.forename + ' ' + author.surname;
+                    }
+
+                    let th1 = document.createElement('th');
+                    th1.innerText = name;
+                    let th2 = document.createElement('th');
+                    th2.innerText = author.title;
+                    let th3 = document.createElement('th');
+                    th3.innerText = author.ISBN;
+                    let th4 = document.createElement('th');
+                    th4.innerText = author.published_date.split('T')[0];
+                    let tr = document.createElement('tr');
+
+                    tr.appendChild(th1);
+                    tr.appendChild(th2);
+                    tr.appendChild(th3);
+                    tr.appendChild(th4);
+                    table.appendChild(tr);
+                }
+            }
+
+            window.onload = generateAudiobookTable;
+    body
+        header(id='navigate_bar', class='navigate_bar')
+            .navbarContainer
+                nav(class='navbar navbar-light')
+                    .navbar-collapse(id='header_navigator')
+                        center
+                            a(class='nav-link', href='/', title='go to homepage', id='homeButton')
+                                img(src='../public/images/logo.png', id='home_link_image')
+        .books
+            center
+                h2 Audiobooks ordered by authors
+            .authors(id='authors')
+                table(id='authorTable')
