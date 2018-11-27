@@ -12,7 +12,6 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    console.log(req.body);
     let { forename, middle_initial, surname, email, password, confirmedP, birthday } = req.body;
 
     conn.checkIfRegisteredAlready(forename, middle_initial, surname, email, password, birthday, res);
