@@ -22,6 +22,10 @@ h1 {
     margin-bottom: 2vmax;
 }
 
+h3 {
+    color: red;
+}
+
 table {
     margin-bottom: 5vmax;
 }
@@ -33,4 +37,16 @@ table, th, td {
 
 th, td {
     padding: 15px;
+}
+
+input {
+    width: 10vmax;
+    height: 2vmax;
+    margin-top: 1vmax;
+    margin-bottom: 2vmax;
+}
+
+button {
+    height: 2vmax;
+    margin-left: 1vmax;
 }
