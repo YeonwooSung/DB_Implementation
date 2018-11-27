@@ -1,0 +1,79 @@
+doctype html
+
+html
+    head
+        title Bookstream :: reviews
+        meta(name='reviews', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='reviews/stylesheets/reviews.css')
+        script.
+            let data = !{JSON.stringify(data)};
+
+            function generateReviewTable() {
+                let reviewList = document.getElementById('reviews');
+
+                if (data[0]) {
+
+                    for (var i = 0; i < data.length; i++) {
+                        let review = data[i];
+
+                        let parent = document.createElement('div');
+                        parent.className = 'reviewDiv';
+
+                        let table = document.createElement('table');
+                        let row1 = document.createElement('tr');
+                        let row2 = document.createElement('tr');
+
+                        let th1 = document.createElement('th');
+                        th1.innerText = 'Customer name';
+                        let th2 = document.createElement('th');
+                        th2.innerText = 'Comment';
+
+                        row1.appendChild(th1);
+                        row1.appendChild(th2);
+
+                        const num = i + 1;
+
+                        let title = document.createElement('div');
+                        let name = document.createElement('th');
+                        let comment = document.createElement('th');
+
+                        title.innerText = num + '. ' + review.title;
+                        title.className = 'reviewTitle';
+
+                        if (review.middle_initials) {
+                            name.innerText = review.forename + ' ' + review.middle_initials + ' ' + review.surname;
+                        } else {
+                            name.innerText = review.forename + ' ' + review.surname;
+                        }
+
+                        comment.innerText = review.comment;
+
+                        parent.appendChild(title);
+                        row2.appendChild(name);
+                        row2.appendChild(comment);
+
+                        table.appendChild(row1);
+                        table.appendChild(row2);
+
+                        parent.appendChild(table);
+
+                        reviewList.appendChild(parent);
+                    }
+                } else {
+                    alert('no review exists!');
+                }
+            }
+
+            window.onload = generateReviewTable;
+    body
+        header(id='navigate_bar', class='navigate_bar')
+            .navbarContainer
+                nav(class='navbar navbar-light')
+                    .navbar-collapse(id='header_navigator')
+                        center
+                            a(class='nav-link', href='/', title='go to homepage', id='homeButton')
+                                img(src='../public/images/logo.png', id='home_link_image')
+        .books
+            center
+                h2 All reviews for ISBN=#{isbn}
+            .reviews(id='reviews' class='reviewList')

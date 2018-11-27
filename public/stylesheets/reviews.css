@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 8vmax;
+}
+
+img {
+    height: 8vmax;
+}
+
+body {
+    padding-top: 10px;
+    padding-right: 20vw;
+    padding-left: 20vw;
+}
+
+h2 {
+    margin-top: 4vmax;
+    margin-bottom: 3vmax;
+}
+
+.reviewList {
+    margin-top: 2vmax;
+    margin-bottom: 3vmax;
+}
+
+.reviewDiv {
+    margin-bottom: 3vmin;
+}
+
+.reviewTitle {
+    font-weight: bold;
+    color: red;
+    margin-bottom: 2vmin;
+}
+
+table {
+    margin-bottom: 3vmax;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+}
