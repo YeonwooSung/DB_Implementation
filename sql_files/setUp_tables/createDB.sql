@@ -51,7 +51,7 @@ CREATE TABLE audiobook (
     age_rating INT,
     purchase_price decimal(8,2),
     publisher_name VARCHAR(1024),
-    published_date DATETIME,
+    published_date DATE,
     audiofile BLOB,
     primary key(ISBN),
     foreign key(narrator_id) references person(ID),
