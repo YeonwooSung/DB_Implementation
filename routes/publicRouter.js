@@ -5,11 +5,6 @@ const router = express.Router();
 
 let path = require('path')
 
-/* GET index.css */
-router.get('/stylesheets/index.css', function (req, res) {
-    res.sendFile(path.resolve(__dirname + '/../public/stylesheets/index.css'));
-});
-
 /* GET index_page.js */
 router.get('/javascripts/index_page.js', function (req, res) {
     res.sendFile(path.resolve(__dirname + '/../public/javascripts/index_page.js'));
@@ -24,5 +19,11 @@ router.get('/javascripts/register.js', function (req, res) {
 router.get('/images/logo.png', function (req, res) {
     res.sendFile(path.resolve(__dirname + '/../public/images/logo.png'));
 });
+
+/* GET index.css */
+router.get('/stylesheets/index.css', function (req, res) {
+    res.sendFile(path.resolve(__dirname + '/../public/stylesheets/index.css'));
+});
+
 
 module.exports = router;

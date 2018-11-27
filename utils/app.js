@@ -26,6 +26,7 @@ let publicRouter = require('../routes/publicRouter');
 let loginRouter = require('../routes/login');
 let registerRouter = require('../routes/register');
 let bookRouter= require('../routes/books');
+let logoutRouter = require('../routes/logout');
 
 //Add router objects
 app.use('/', indexRouter);
@@ -33,6 +34,7 @@ app.use('/public', publicRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/books', bookRouter);
+app.use('/logout', logoutRouter);
 
 
 //Set the view engine

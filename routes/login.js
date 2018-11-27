@@ -7,7 +7,7 @@ let conn = require('../utils/dbConnection');
 //To solve the forbidden error that is occurred by the '/..' in the res.sendFile function.
 const path = require('path');
 
-/* GET users listing. */
+/* GET log in page */
 router.get('/', function (req, res) {
     res.render('login', { title: 'Bookstream :: login', val: undefined });
 });
