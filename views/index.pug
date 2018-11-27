@@ -4,10 +4,37 @@ html
     head 
         title #{title}
         meta(name='initial page', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='public/stylesheets/index.css')
+        script.
+            function getCookieByName(name) {
+                var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+                return value ? value : null;
+            };
+
+            function init() {
+                if (getCookieByName('ID')) {
+                    let nav = document.getElementById('userNav');
+                    nav.removeChild(document.getElementById('login'));
+
+                    let logout = document.createElement('a');
+                    logout.id = 'logout';
+                    logout.href = '/logout';
+                    logout.innerText = 'logout';
+                    nav.appendChild(logout);
+                }
+            }
+
+            window.onload = init;
     body
-        header
-            .login
-                a(id='login' href='/login')
+        header(id='navigate_bar', class='navigate_bar')
+            .navbarContainer
+                nav(class='navbar navbar-light')
+                    .navbar-collapse(id='header_navigator')
+                        center
+                            a(class='nav-link', href='/', title='go to homepage', id='homeButton')
+                                img(src='../public/images/logo.png', id='home_link_image')
+                        .userNav(id='userNav' style="display: flex; justify-content: flex-end; margin-right: 5vmax; font-size: 3vmin")
+                            a(id='login' href='/login') log in
         .index
             h1 Bookstream
             .navigateBar
