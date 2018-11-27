@@ -6,7 +6,7 @@ const conn = require('../utils/dbConnection');
 
 let path = require('path');
 
-/* GET users listing. */
+/* GET audiobook list */
 router.get('/', function (req, res) {
     conn.listAllAudiobooks(res); //get all audiobooks from db and send the response to the client
 });

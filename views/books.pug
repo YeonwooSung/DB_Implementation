@@ -54,7 +54,10 @@ html
         .books
             center
                 h1 List of all audiobooks
-            form
+                h3 If you want to view the reviews of specific book, type the ISBN of that book.
+            form(method='POST', action='/reviews')
+                input(type='text' name='isbn' placeholder='ISBN')
+                button(type='submit', id='isbnSearchButton') Search
             table(id='bookTable' class='table')
                 tr(id='audiobookFields')
                     th ISBN
