@@ -12,7 +12,7 @@ router.get('/', function (req, res) {
 });
 
 /* GET books.css */
-router.get('/stylesheets/register.css', function (req, res) {
+router.get('/stylesheets/books.css', function (req, res) {
     res.sendFile(path.resolve(__dirname + '/../public/stylesheets/books.css'));
 });
 

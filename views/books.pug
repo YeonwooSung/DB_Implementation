@@ -4,7 +4,7 @@ html
     head
         title Bookstream :: books
         meta(name='books', content='width=device-width, initial-scale=1.0')
-        link(rel='stylesheet', href='/stylesheets/register.css')
+        link(rel='stylesheet', href='books/stylesheets/books.css')
         script.
             let data = !{JSON.stringify(data)};
 
@@ -54,6 +54,7 @@ html
         .books
             center
                 h1 List of all audiobooks
+            form
             table(id='bookTable' class='table')
                 tr(id='audiobookFields')
                     th ISBN
