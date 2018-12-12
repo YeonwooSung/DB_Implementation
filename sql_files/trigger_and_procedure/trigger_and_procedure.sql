@@ -113,3 +113,6 @@ BEGIN
 	END IF;
 	call insertAsCustomer(personCount, email_address, pwd);
 END //
+
+
+DELIMITER ; --reset the delimiter to semi-colon.
