@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 //TODO use favicon
 const favicon = require('express-favicon');
-app.use(favicon(path.resolve(__dirname + '../public/images/book.ico')));
+app.use(favicon(path.resolve(__dirname + '/../public/images/book.ico')));
 
 
 //The routers objects.
